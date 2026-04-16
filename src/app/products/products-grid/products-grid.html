@@ -1,12 +1,16 @@
 <div class="products-container">
+
+  <mat-form-field appearance="outline" class="search-field">
+    <mat-label>Search products</mat-label>
+    <input matInput placeholder="Type to search..." [(ngModel)]="searchTerm">
+  </mat-form-field>
   <div class="products-grid">
-    @for (product of products(); track $index) {
+    @for (product of filteredProducts(); track $index) {
       <app-product-card [product]="product"></app-product-card>
     } @empty {
       <div class="empty-state">
         <mat-icon>inventory_2</mat-icon>
-        <p>No products available</p>
-        <p>Please check back later.</p>
+        <p>No products match your search</p>
       </div>
     }
   </div>

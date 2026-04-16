@@ -1,12 +1,17 @@
+.products-container {
+  display: grid;
+  gap: 1rem;
+}
+
+.search-field {
+  display: block;
+  width: 100%;
+}
+
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 16px;
-}
-
-.products-container {
-  display: grid;
-  gap: 1rem;
 }
 
 .empty-state {
