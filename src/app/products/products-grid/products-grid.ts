@@ -1,10 +1,11 @@
-import { Component, signal, computed } from '@angular/core';
+import { Component, signal, computed, inject } from '@angular/core';
 import { ProductCard } from '../product-card/product-card';
 import { Product } from '../product';
 import { MatIcon } from "@angular/material/icon";
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import { CartService } from '../../cart/cart-service';
 @Component({
   selector: 'app-products-grid',
   imports: [ProductCard, MatIcon, FormsModule, MatFormFieldModule, MatInputModule],
@@ -12,6 +13,8 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './products-grid.scss',
 })
 export class ProductsGrid {
+
+  private readonly cartService = inject(CartService);
 
   protected readonly searchTerm = signal('');
 
@@ -47,8 +50,8 @@ export class ProductsGrid {
     );
   });
 
-  protected clearSearch() {
-    this.searchTerm.set('');
+  protected addToCart(product: Product) {
+    this.cartService.addtoCart(product);
   }
 
 }

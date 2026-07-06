@@ -6,7 +6,7 @@
   </mat-form-field>
   <div class="products-grid">
     @for (product of filteredProducts(); track $index) {
-      <app-product-card [product]="product"></app-product-card>
+      <app-product-card [product]="product" (addToCart)="addToCart($event)"></app-product-card>
     } @empty {
       <div class="empty-state">
         <mat-icon>inventory_2</mat-icon>
